@@ -1,0 +1,27 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <div class='container profile-wrapper'>
+        <h2>{{ profile.username }}</h2>
+        <p>Followers: {% if followers.count %}  {{followers.count}}  {% else %} 0 {% endif %} Follows: {% if follows.count %} {{ follows.count }} {% else %} 0 {% endif %}</p>
+        {% if user.is_authenticated and user.id != profile.id %}
+        <div class="profile-buttons">
+                <form action="{% url 'follow-unfollow' user_id=profile.id %}" method="POST">
+                {% csrf_token %}
+                {% if user in followers%}
+                        <button type="submit" class="btn btn-danger unfollow">
+                            Unfollow
+                        </button>
+                {% else %}
+                        <button type="submit" class="btn btn-primary follow">
+                            Follow
+                        </button>
+                {% endif %}
+                </form>
+        </div>        
+        {% endif %}
+        <br>
+        {% include "network/posts.html"%}
+    </div>
+    {% include "network/paginator.html"%}
+{% endblock %}

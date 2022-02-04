@@ -1,0 +1,21 @@
+.post-form-wrapper {
+    margin: 15px;
+    margin-right: 400px;
+}
+
+.post-content-wrapper {
+    border: solid;
+    margin: 10px;
+    padding: 3px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.noHover{
+    pointer-events: none;
+    color: gray;
+}
+
+.post-content {
+    margin-bottom: 17px;
+}

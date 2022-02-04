@@ -1,0 +1,18 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+    <div class="post-form-wrapper">
+        <form action="{% url 'post' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ post_form.content }}
+            </div>
+            <input class="btn btn-primary" name="comment_form" type="submit">
+        </form>
+    </div>
+    {% endif %}
+
+    {% include "network/posts.html" %}
+    {% include "network/paginator.html"%}
+{% endblock %}
